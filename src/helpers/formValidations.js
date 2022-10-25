@@ -1,37 +1,11 @@
 import { isEmail, isLength, isEmpty } from 'validator';
 
-// const emptyField = (email, password, setErrors) => {
-
-//     if( isEmpty(email) && isEmpty(password) ){
-        
-//         setErrors({
-//             email: { msg: "* El campo no puede estar vacío", status: true },
-//             password: { msg: "* El campo no puede estar vacío", status: true },
-//         })
-//     }else if( isEmpty(email)){
-//         setErrors({
-//             email: { msg: "* El campo no puede estar vacío", status: true },
-//             password: { msg: "", status: false },
-//         })
-//     } else if( isEmpty(password)){
-//         setErrors({
-//             email: { msg: "", status:false },
-//             password: { msg: "* El campo no puede estar vacío", status: true },
-//         })
-//     } else{
-//         setErrors({
-//             email: { msg: "", status: false },
-//         password: { msg: "", status: false }
-//         })
-//     }        
-// }
-
-
+// esta función recibe el valor del email y el dispatch que se encarga de setear los errores para cada cada campo
 const emptyFieldEmail = (email, setErrors) => {
-
-    if( isEmpty(email)){
+    
+    if( isEmpty(email)){ // si el campo está vació, isEmpty(email) devolverá un true, por lo tanto setearé el error
         
-        setErrors(( pre ) => {
+        setErrors(( pre ) => { // setErrors recibe por parámetro una función flecha (callback) cuyo parámetro "pre" representa el valor actual que tiene el estado "errors"
         
            return  {
                 email: { msg: "* El campo no puede estar vacío", status: true },
@@ -49,7 +23,7 @@ const emptyFieldEmail = (email, setErrors) => {
     } 
 }
 
-const emailField = (email, setErrors) => {
+const emailField = (email, setErrors) => {// verifica si el campo coincide con el formato de un mail, si es asi devuelve un true
     if(isEmail(email)){
         setErrors((valorActual)=>{
             valorActual.email.msg="";
@@ -65,7 +39,7 @@ const emailField = (email, setErrors) => {
     }
 }
 
-const passwordField = (password, setErrors) => {
+const passwordField = (password, setErrors) => { // verifica que el cambo este entre 6 y 12 caracteres
     if(isLength(password,{min:6,max:12})){
         setErrors((valorActual)=>{
             valorActual.password.msg="";
