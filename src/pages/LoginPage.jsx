@@ -32,13 +32,13 @@ const LoginPage = () => {
     emptyFieldEmail(e.target[0].value.trim(),setErrors);
     emailField(e.target[0].value.trim(), setErrors);
     passwordField(e.target[1].value.trim(), setErrors);
-
+                
     if(!e.target[0].value.trim().length)return; 
 
     if (!errors.email.status && !errors.password.status) {
       const response = await fetch(URL, {
         method: "POST",
-        body: JSON.stringify({ email, password }), // data can be `string` or {object}!
+        body: JSON.stringify({ email, password }),
         headers: {
           "Content-Type": "application/json",
         },

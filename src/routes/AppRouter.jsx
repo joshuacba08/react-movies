@@ -5,17 +5,17 @@ import PrivateRoute from "./PrivateRoute";
 
 const AppRouter = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route exact path="auth/*" element={<AuthRouter />} />
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="auth/*" element={<AuthRouter />} />
 
-        <Route path="/*" element={
-            <PrivateRoute>
-                <MoviesRouter />
-            </PrivateRoute>
-        }/>
-      </Routes>
-    </BrowserRouter>
+          <Route path="/*" element={
+              <PrivateRoute>
+                  <MoviesRouter />
+              </PrivateRoute>
+          }/>
+        </Routes>
+      </BrowserRouter>
   );
 };
 
