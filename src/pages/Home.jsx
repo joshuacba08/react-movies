@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
+import MovieList from "../components/MovieList";
+import CardResult from "../components/CardResult";
 const Home = () => {
-  const urlBase="http://www.omdbapi.com";
-  const api_key= "236569b8";
+  const urlBase = "http://www.omdbapi.com";
+  const api_key = "236569b8";
   const [query, setQuery] = useState("");
-  const [movie, setMovie] = useState(null);  
-  
-  const handleInput = (e) =>{
+  const [movie, setMovie] = useState(null);
+
+  const handleInput = (e) => {
     setQuery(e.target.value);
   };
 
@@ -19,23 +21,20 @@ const Home = () => {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
-  const handleSubmit = (e) =>{
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    getMovieByTitle(query)
-  }
-  
-
-
+    getMovieByTitle(query);
+  };
 
   return (
-    <div className="mt-4">
+    <div className="mt-4 p-4">
       <form
-        onSubmit={handleSubmit} 
-        className="flex items-center gap-2 text-white text-2xl px-3">
-        
+        onSubmit={handleSubmit}
+        className="flex items-center gap-2 text-white text-2xl"
+      >
         <button type="submit">
           <FiSearch />
         </button>
@@ -48,9 +47,16 @@ const Home = () => {
           onChange={handleInput}
         />
       </form>
+      {movie && movie.Response === "True" && (
+        <div className="my-5">
+          <CardResult movie={movie} />
+        </div>
+      )}
+      {movie && movie.Response === "False" && (
+        <h5 className="text-slate-100 font-medium text-xl">No se encontraron coincidencias </h5>
+      )}
 
-      {movie && <h2 className="text-white">{movie.Title}</h2>}
-
+      <MovieList title="Listado de Peliculas"/>
     </div>
   );
 };
