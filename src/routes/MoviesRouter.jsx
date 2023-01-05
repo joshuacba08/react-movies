@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import FooterApp from '../layout/FooterApp'
 import NavbarApp from '../layout/NavbarApp'
 import Home from '../pages/Home'
+import Detailpage from '../pages/Detailpage'
 
 const MoviesRouter = () => {
   return (
@@ -13,7 +14,7 @@ const MoviesRouter = () => {
             <Route path="/home" element={ <Home /> }/>
             <Route path="/search" />
             <Route path="/movies" />
-            <Route path="/detail/:id" />
+            <Route path="/detail/:id" element={ <Detailpage /> }/>
         </Routes>
 
         <FooterApp />
