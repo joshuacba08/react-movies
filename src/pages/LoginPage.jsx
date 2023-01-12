@@ -4,10 +4,15 @@ import {
   emailField,
   passwordField,
 } from "../helpers/formValidations";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../store/slices/authSlice";
+
 
 const LoginPage = () => {
   const URL = "https://fake-login-api-production.up.railway.app/api/auth/login";
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("Abc123");
   const [errors, setErrors] = useState({
@@ -20,6 +25,8 @@ const LoginPage = () => {
     emptyFieldEmail(e.target.value.trim(),setErrors);
     emailField(e.target.value.trim(), setErrors);
   };
+
+ 
 
   const handlePassword = (e) => {
     setPassword(e.target.value.trim());
@@ -45,6 +52,11 @@ const LoginPage = () => {
       });
       const data = await response.json();
       console.log(data);
+
+      if( data.ok ){// si entro aca es porque me logie bien
+        dispatch( login(data.user) );
+        navigate('/home');
+      }
     }
   };
 
