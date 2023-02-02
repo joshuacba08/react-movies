@@ -4,6 +4,7 @@ import FooterApp from '../layout/FooterApp'
 import NavbarApp from '../layout/NavbarApp'
 import Home from '../pages/Home'
 import Detailpage from '../pages/Detailpage'
+import Favorites from '../pages/Favorites'
 
 const MoviesRouter = () => {
   return (
@@ -12,8 +13,7 @@ const MoviesRouter = () => {
 
         <Routes>
             <Route path="/home" element={ <Home /> }/>
-            <Route path="/search" />
-            <Route path="/movies" />
+            <Route path='/favorites' element={ <Favorites /> } />
             <Route path="/detail/:id" element={ <Detailpage /> }/>
         </Routes>
 

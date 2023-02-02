@@ -8,7 +8,7 @@ import {
 } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../store/slices/authSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const NavbarApp = () => {
   const dispatch = useDispatch();
@@ -26,19 +26,21 @@ const NavbarApp = () => {
           className="w-9 cursor-pointer"
           src={logo}
           alt="logo de la plataforma"
+          onClick={()=>{ navigate('/home') }}
         />
 
+
         <nav className="flex items-center gap-6 text-2xl text-white">
-          <button className="">
+          <button className="" onClick={()=>{ navigate('/home') }}>
             <BsGridFill />
           </button>
-          <button className="">
+          {/* <button className="" onClick={()=>{ navigate('') }}>
             <BsFilm />
           </button>
-          <button className="">
+          <button className="" onClick={()=>{ navigate('') }}>
             <BsTvFill />
-          </button>
-          <button className="">
+          </button> */}
+          <button className="" onClick={()=>{ navigate('/favorites') }}>
             <BsFillBookmarkHeartFill />
           </button>
         </nav>

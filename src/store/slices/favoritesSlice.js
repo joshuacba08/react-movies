@@ -1,10 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { movieExist } from "../../helpers/favoritesHelper";
 
-
-
-
-
 export const favoritesSlice = createSlice({
     name: 'favoritesSlice',
     initialState:{
@@ -12,8 +8,7 @@ export const favoritesSlice = createSlice({
     }, 
        reducers: {
       addFavorites:(state,action) => {
-        const exist = movieExist(state.favorites, action.payload.id);
-        if(exist){
+        if(movieExist(state.favorites, action.payload.id)){
             const newFavorites = state.favorites.filter(movie => movie.id !== action.payload.id);
             state.favorites = newFavorites
         } else {
