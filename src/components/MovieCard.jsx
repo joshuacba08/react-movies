@@ -4,8 +4,8 @@ const MovieCard = ({ movie }) => {
   const { image, release_date, title } = movie;
 
   return (
-    <article className="w-40 h-48">
-      <div className="w-full h-28 rounded-xl overflow-hidden">
+    <article className="w-40 h-48 md:w-52 md:h-60">
+      <div className="w-full h-28 md:h-36 rounded-xl overflow-hidden">
         <img className="w-full h-full object-cover" src={image} alt="" />
       </div>
 
