@@ -34,12 +34,6 @@ const NavbarApp = () => {
           <button className="" onClick={()=>{ navigate('/home') }}>
             <BsGridFill />
           </button>
-          {/* <button className="" onClick={()=>{ navigate('') }}>
-            <BsFilm />
-          </button>
-          <button className="" onClick={()=>{ navigate('') }}>
-            <BsTvFill />
-          </button> */}
           <button className="" onClick={()=>{ navigate('/favorites') }}>
             <BsFillBookmarkHeartFill />
           </button>

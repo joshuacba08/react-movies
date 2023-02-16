@@ -54,6 +54,7 @@ const LoginPage = () => {
       console.log(data);
 
       if( data.ok ){// si entro aca es porque me logie bien
+        localStorage.setItem('user',JSON.stringify(data.user))
         dispatch( login(data.user) );
         navigate('/home');
       }

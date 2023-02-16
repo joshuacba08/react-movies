@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../store/slices/authSlice";
 
 const PrivateRoute = ({ children }) => {
-  const login = useSelector((state) => state.auth.isAuthenticated);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  
+  useEffect(() => {
+    const user = localStorage.getItem('user')
+    if( user ){
+      dispatch( login(JSON.parse(user)) )
+    }      
+  }, [])
+  
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
-  return login ? (
+  return isAuthenticated ? (
     children
   ) : (
     <main className="w-screen h-screen bg-slate-900 flex justify-center items-center flex-col">
