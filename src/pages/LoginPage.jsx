@@ -55,7 +55,7 @@ const LoginPage = () => {
 
       if( data.ok ){// si entro aca es porque me logie bien
         localStorage.setItem('user',JSON.stringify(data.user))
-        dispatch( login(data.user) );
+        dispatch( login(data.user) ); // data.user estara contenido en action.payload en el authSlice
         navigate('/home');
       }
     }

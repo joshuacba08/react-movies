@@ -8,13 +8,17 @@ const PrivateRoute = ({ children }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
+  // este useEfect esta configurado para ejecutarse una sola vez
+  // Durante el montaje del componente. Array de dependencias vacio
   useEffect(() => {
-    const user = localStorage.getItem('user')
+    const user = localStorage.getItem('user') // consulta si existe un valor llamado user en el localstorage
     if( user ){
-      dispatch( login(JSON.parse(user)) )
-    }      
+      dispatch( login(JSON.parse(user)) ) // si user existe, ejecuto la funcion login de mi slice y me logue de forma automatica enviando la informacion del usuario que estaba en el localstorage
+    }
+    // si user es undefined no hago nada      
   }, [])
   
+  // voy a buscar el valor de isAuthenticated para permitir o restringir el acceso a la aplicacion
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   return isAuthenticated ? (
